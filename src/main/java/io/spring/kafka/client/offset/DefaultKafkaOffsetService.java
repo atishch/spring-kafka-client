@@ -11,19 +11,17 @@ import org.apache.kafka.common.TopicPartition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DefaultKafkaOffsetService implements OffsetService 
+import io.spring.kafka.client.consumer.KafkaConsumerAware;
+
+public class DefaultKafkaOffsetService implements OffsetService,KafkaConsumerAware
 {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DefaultKafkaOffsetService.class);
 			
 	private Consumer<?, ?> consumer;
 	
-
-	public DefaultKafkaOffsetService(KafkaConsumer<?, ?> consumer) {
-		this.consumer = consumer;
-	}
-
-	public void setConsumer(Consumer<?, ?> consumer) {
+	@Override
+	public void setKafkaConsumer(KafkaConsumer<?, ?> consumer) {
 		this.consumer = consumer;
 		
 	}
@@ -63,6 +61,8 @@ public class DefaultKafkaOffsetService implements OffsetService
 		}
 		return -1L;
 	}
+
+	
 	
 
 }
