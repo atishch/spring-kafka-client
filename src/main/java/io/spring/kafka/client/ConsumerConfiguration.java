@@ -5,9 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import io.spring.kafka.client.boot.ConsumerAutoRunner;
+import io.spring.kafka.client.consumer.ConsumerAutoRunner;
 
-public class KafkaClientConfig {
+public class ConsumerConfiguration {
 	
 	//This Bean is required to Enable the Consumer Auto Configuration
 	@Bean

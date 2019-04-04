@@ -28,10 +28,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
-import io.spring.kafka.client.ConsumerConfigurer;
-import io.spring.kafka.client.KafkaClientConstants;
-import io.spring.kafka.client.ProcessDelegator;
+import io.spring.kafka.client.ConsumerConstants;
+import io.spring.kafka.client.event.KafkaConsumerAware;
 import io.spring.kafka.client.offset.OffsetService;
+import io.spring.kafka.client.spi.ConsumerConfigurer;
+import io.spring.kafka.client.spi.ProcessDelegator;
 import io.spring.kafka.client.utility.KafkaUtils;
 
 
@@ -89,13 +90,13 @@ public class DynamicConsumer<K extends Serializable, V extends Serializable> imp
 	public void init(Map<String, Object> overrideSettings) {
 		printTopics = KafkaUtils.printTopics(this.topics);
 		
-		Map<String, Object> defaulSettings = KafkaClientConstants.defaultSystemValues();
+		Map<String, Object> defaulSettings = ConsumerConstants.defaultSystemValues();
 		if(overrideSettings!=null && !overrideSettings.isEmpty()){
 			defaulSettings.putAll(overrideSettings);
 		}
-		this.kafkaPollTimeoutMs = Long.parseLong(defaulSettings.get(KafkaClientConstants.SYSTEM_CONSUMER_POLL_TIMEOUT_MS).toString());
-		this.processTerminationTimeoutMs = Long.parseLong(defaulSettings.get(KafkaClientConstants.SYSTEM_CONSUMER_PROCESS_TERMINATION_TIMEOUT_MS).toString());
-		this.waitHeartbeatMs  = Long.parseLong(defaulSettings.get(KafkaClientConstants.SYSTEM_CONSUMER_WAIT_HEARTBEAT_MS).toString());
+		this.kafkaPollTimeoutMs = Long.parseLong(defaulSettings.get(ConsumerConstants.SYSTEM_CONSUMER_POLL_TIMEOUT_MS).toString());
+		this.processTerminationTimeoutMs = Long.parseLong(defaulSettings.get(ConsumerConstants.SYSTEM_CONSUMER_PROCESS_TERMINATION_TIMEOUT_MS).toString());
+		this.waitHeartbeatMs  = Long.parseLong(defaulSettings.get(ConsumerConstants.SYSTEM_CONSUMER_WAIT_HEARTBEAT_MS).toString());
 		
 		this.threadName = "Processor_"+printTopics.trim().replaceAll(" ","-");
 		

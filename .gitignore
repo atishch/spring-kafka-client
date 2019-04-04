@@ -1,3 +1,26 @@
-*/target/**
-target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
-target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+# Maven
+target/
+
+# Eclipse
+.settings/
+.classpath
+.project
+.factorypath
+.apt_generated/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+#vscode
+.vscode/
+
+# gnupg keyring
+/.gnupg
+
+#nodejs
+node_modules/
+
+#flattened POMs
+.flattened-pom.xml

@@ -1,4 +1,4 @@
-package io.spring.kafka.client;
+package io.spring.kafka.client.spi;
 
 import java.io.Serializable;
 import java.util.List;

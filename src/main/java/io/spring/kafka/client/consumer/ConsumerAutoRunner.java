@@ -1,4 +1,4 @@
-package io.spring.kafka.client.boot;
+package io.spring.kafka.client.consumer;
 
 import java.io.Serializable;
 
@@ -21,8 +21,7 @@ import org.springframework.context.SmartLifecycle;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
-import io.spring.kafka.client.ConsumerConfigurer;
-import io.spring.kafka.client.consumer.DynamicConsumer;
+import io.spring.kafka.client.spi.ConsumerConfigurer;
 import io.spring.kafka.client.utility.KafkaUtils;
 
 
